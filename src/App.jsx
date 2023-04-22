@@ -8,57 +8,62 @@ import Tw from "./imagenes/Twitter.png"
 import Vm from "./imagenes/Vimeo.png"
 import Logo from "./imagenes/logo-dos.png"
 import Donate from "./imagenes/donate.png"
+import Menu from "./imagenes/Menu.png"
+import LogoCelu from "./imagenes/LogoCelu.png"
+import Izq from "./imagenes/izquierda.png"
+import Der from "./imagenes/derecha.png"
 import './App.css'
 
 function App() {
   return (
     <>
-    <header className='bg-no-repeat bg-cover bg-center w-full bg-Bgentero h-128 lg:h-127'>
-      <nav></nav>
+    <header className=' bg-no-repeat bg-cover bg-center w-full h-screen xl:h-[65vh] bg-Bgentero'>
+      <nav className="flex justify-between items-center p-4 xl:px-20">
+        <img src={Menu} alt="" />
       <div className=''>
-        <p className='text-white text-3xl md:text-4xl text-right p-8 px-16'><span className='text-primary'>Minga</span>雪</p>
+        <img src={Logo} className="sm:hidden md:hidden" alt="" />
+        <img src={LogoCelu} className="lg:hidden xl:hidden" alt="" />
       </div>
-      <section className='text-white p-4 py-16 md:px-8 lg:px-20'>
-        <h1 className='text-2xl font-bold sm:text-4xl md:text-5xl lg:text-6xl'>For the love of manga</h1>
-        <h3 className='text-lg font-sm lg:text-2xl py-2'>Explore our varieties</h3>
-        <p className='text-sm pb-2 lg:text-base'>#MingaLove</p>
-        <button className='bg-white w-40 h-12 rounded-lg text-primary font-semibold text-2xl lg:w-48 lg:text-1xl'>Sign in!</button>
+      </nav>
+      <section className='flex flex-col sm:items-center md:items-center lg:items-center text-white py-52 xl:px-20 xl:py-36'>
+        <h1 className='sm:text-5xl md:text-6xl text-6xl sm:text-center md:text-center lg:text-center font-bold'>For the love of manga</h1>
+        <h3 className='text-lg font-sm py-2'>Explore our varieties</h3>
+        <p className='sm:hidden md:hidden lg:hidden md:text-sm py-2 font-semibold'>#MingaLove</p>
+        <button className='w-5/6 h-12 md:w-3/4 lg:w-1/2 xl:w-3/12 rounded bg-white text-primary font-semibold text-2xl'>Sign in!</button>
       </section>
     </header>
-    <section className='flex justify-center items-center md:h-48 my-8 lg:h-96'> 
-      <div className='flex flex-row bg-fondo bg-repeat sm:h-40 md:h-44 lg:h-56 w-11/12'>
-        <div className='flex items-end justify-around px-20'>
-          <img src={Orangeuno} className='w-32 h-44 md:w-38 md:h-48 lg:h-64 lg:w-72 mx-8' alt="" />
-          <img src={Orangedos} className='w-36 h-48  md:w-38 md:h-56 lg:h-72 lg:w-52 py-4 mx-8' alt="" />
+    <section className='sm:hidden md:flex lg:flex xl:flex justify-center items-center h-72'> 
+      <div className='flex flex-row bg-fondo bg-repeat justify-between w-11/12 h-1/2'>
+          <button><img src={Izq} alt="" /></button>
+        <div className='flex items-end justify-around w-36 mx-4 xl:w-96'>
+          <img src={Orangeuno} className='w-24 lg:w-40 h-44 xl:w-48 xl:h-44' alt="" />
+          <img src={Orangedos} className='w-24 lg:w-40 h-48 xl:w-36 xl:h-52 py-2 ' alt="" />
         </div>
-        <div className='flex flex-col justify-center sm:w-56 text-white sm:pb-3 sm:pr-2 md:pb-5 md:pr-4 lg:w-96 mx-8 '>
-          <h3 className='lg:text-3xl'>Shonen</h3>
-          <p className='text-xs py-2 lg:text-sm'>Is the manga that is aimed at adolescent boys. They are series with large amounts of action, in which humorous situations often occur. The camaraderie between members of a collective or a combat team stands out.</p>
+        <div className='flex flex-col justify-center text-white w-2/4 md:p-4 px-2'>
+          <h3 className=''>Shonen</h3>
+          <p className='text-xs text-[8px]'>Is the manga that is aimed at adolescent boys. They are series with large amounts of action, in which humorous situations often occur. The camaraderie between members of a collective or a combat team stands out.</p>
         </div>
+        <button><img src={Der} alt="" /></button>
       </div>
     </section>
-    <footer>
-      <div>
-        <img src={Footer} alt="" className="w-full rounded-[50%_50%_48%52%/_0%_0%_100%_100%]"/>
-      </div>
-      <div className='flex flex-row justify-around h-60 items-center w-11/12 border-b-4'> 
-        <div className='flex-row flex'>
-          <p className='px-4'>Home</p>
-          <p className='px-4'>Mangas</p>
+    <footer className="h-96">
+      <img src={Footer} alt="" className="w-full h-2/4 rounded-[100%_100%_70%70%/_0%_0%_100%_100%]"/>
+      <div className='flex flex-col md:flex-row lg:flex-row items-center justify-around border-b-4'> 
+        <div className='flex flex-col md:flex-row lg:flex-row just items-center lg:px-2'>
+          <btn className='py-2 px-2'>Home</btn>
+          <btn className='py-2 px-2'>Mangas</btn>
         </div>
-        <div className=''>
+        <div className='flex h-20 justify-center items-center'>
           <img src={Logo} alt="" />
         </div>
-        <div className=''>
-          <div className='flex flex-row justify-between py-4 '>
-          <img src={Fb} alt="" />
-          <img src={Tw} alt="" />
-          <img src={Vm} alt="" />
-          <img src={Yt} alt="" />
+        <div className='flex flex-col h-24'>
+          <div className='flex flex-row justify-between py-3'>
+            <img src={Fb} alt="" />
+            <img src={Tw} alt="" />
+            <img src={Vm} alt="" />
+            <img src={Yt} alt="" />
           </div>
-          <div>
-            <img src={Donate} alt="" />
-          </div>
+          <img src={Donate} className="" alt="" />
         </div>
       </div>
     </footer>
