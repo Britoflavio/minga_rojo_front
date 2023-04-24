@@ -5,6 +5,7 @@ module.exports = {
   './src/**/*.{js,jsx,ts,tsx}' //esto también es una forma de englobar subdirectorios
   ],
   theme: {
+    
     extend: {
       backgroundImage:{
         'Bgentero': "url('./imagenes/bg-1.png')",
@@ -20,12 +21,22 @@ module.exports = {
         '127': '33rem',
       },
       width:{
-        'orange': '38rem',
-        'orangedos': '47rem',
-        'orangetres': '62rem',
-        'orangecuatro': '75rem',
+      },
+      screens: {
+        'sm': {'min': '320px', 'max': '499px'},
+  
+        'md': {'min': '500px', 'max': '619px'},
+        // => @media (min-width: 768px) { ... }
+        
+        'lg': {'min': '620px', 'max': '1023px'},
+        // => @media (min-width: 1024px) { ... }
+  
+        'xl': {'min': '1024px', 'max': '1300px'},
+        // => @media (min-width: 1280px) { ... }
+  
+        '2xl': '1536px'
+        // => @media (min-width: 1536px) { ... }
       }
-      
     }
   },
   variants: {},
