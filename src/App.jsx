@@ -53,7 +53,6 @@ function App() {
     </section>
     <footer className="h-96">
       <img src={Footer} alt="" className="w-full h-2/4 rounded-[100%_100%_70%70%/_0%_0%_100%_100%]"/>
-
       <div className='flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row 2xl:py-12 items-center justify-around border-b-4'> 
         <div className='flex flex-col md:flex-row lg:flex-row  xl:flex-row 2xl:flex-row  just items-center lg:px-2'>
           <button className='p-2'>Home</button>
@@ -70,7 +69,6 @@ function App() {
             <img src={Yt} alt="" />
           </div>
           <button><img src={Donate} className="" alt="" /></button>
-          <img src={Donate} className="" alt="" />
         </div>
       </div>
     </footer>
