@@ -36,7 +36,7 @@ module.exports = {
   
         '2xl': {'min': '1351px'},
 
-        'xl': {'min': '1024px', 'max': '1300px'},
+        'xl': {'min': '1024px', 'max': '1535px'},
         // => @media (min-width: 1280px) { ... }
   
         '2xl': '1536px'
