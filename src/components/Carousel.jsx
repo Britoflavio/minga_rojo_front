@@ -28,12 +28,12 @@ let restar = () => {
 }
   return (
 
-  <section className='sm:hidden md:flex lg:flex xl:flex 2xl:flex justify-center items-center h-72 2xl:h-[45vh]' >
+  <section className='sm:hidden md:flex lg:flex xl:flex 2xl:flex justify-center items-center h-72 lg:h-[35vh] xl:h-[35vh] 2xl:h-[45vh]' >
     <div className='flex flex-row bg-repeat justify-between w-11/12 h-1/2' style={{backgroundColor:categories[counter]?.color}}>
       <button  className='2xl:w-28 2xl:flex 2xl:items-center 2xl:justify-center'><img onClick={restar} src={Izq} alt="" /></button>
       <div className='flex items-end justify-around w-3/6 mx-4'>
-        <img src={categories[counter]?.character_photo} className='w-28 h-44 lg:w-40 lg:48 xl:w-48 xl:h-48 2xl:w-52 2xl:h-64' alt="" />
-        <img src={categories[counter]?.cover_photo} className='w-28 h-52 lg:w-36 lg:h-52 xl:w-44 xl:h-52 2xl:w-40 2xl:h-72 py-2 ' alt="" />
+        <img src={categories[counter]?.character_photo} className='w-28 h-44 lg:w-40 lg:h-48 xl:w-40 xl:h-48 2xl:w-52 2xl:h-64' alt="" />
+        <img src={categories[counter]?.cover_photo} className='w-28 h-52 lg:w-36 lg:h-56 xl:w-44 xl:h-56 2xl:w-40 2xl:h-72 py-2 ' alt="" />
       </div>
       <div className='flex flex-col justify-center text-white w-2/4 lg:px-4 xl:px-14 2xl:px-20'>
         <h3 className='xl:text-3xl 2xl:text-4xl 2xl:pb-8'>{categories[counter]?.name.charAt(0).toUpperCase()+categories[counter]?.name.slice(1)}</h3>
