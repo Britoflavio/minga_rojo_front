@@ -10,7 +10,7 @@ export default function Navbar(){
       setHide(!hide)
   }
   return(
-    <div className="flex justify-between items-center absolute w-full  2xl:px-28 2xl:py-8">
+    <div className="flex justify-between items-center absolute w-full sm:px-8 sm:py-4 md:px-20 md:py-8 lg:px-20 lg:py-8 2xl:px-48 2xl:py-8 xl:px-40 xl:py-8">
     <button><img onClick={show} src={Menu} alt="" /></button>
     <div className=''>
       <img src={Logo} className="sm:hidden md:hidden" alt="" />
@@ -20,7 +20,6 @@ export default function Navbar(){
                 <>
                     <div className="absolute w-screen sm:w-screen sm:h-screen self-start bg-fondo flex flex-col justify-start items-center xl:w-screen 2xl:w-full 2xl:left-0 2xl:top-0">
                         <div className="w-full flex justify-around items-center h-[15vh]">
-                            
                             <div className="mr-12 text-white">
                                 <p className="font-medium">Lucas Ezequiel Silva</p>
                                 <p>lucasezequielsilva@gmail.com</p>
@@ -36,7 +35,6 @@ export default function Navbar(){
                             <a className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" href="#">Favorites</a>
                             <a className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" href="#">Logout</a>
                         </div>
-                        
                     </div>
                 </>
             ) : (
