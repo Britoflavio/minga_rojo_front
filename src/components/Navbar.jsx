@@ -3,6 +3,7 @@ import Logo from "../imagenes/logo-dos.png"
 import Menu from "../imagenes/Menu.png"
 import LogoCelu from "../imagenes/LogoCelu.png"
 import {useState} from 'react'
+import { Link as Anchor } from "react-router-dom"
 
 export default function Navbar(){
   const [hide, setHide] = useState(false)
@@ -34,6 +35,7 @@ export default function Navbar(){
                             <a className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" href="#">My comics</a>
                             <a className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" href="#">Favorites</a>
                             <a className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" href="#">Logout</a>
+                            <Anchor className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" to="/mangas-form">New Manga</Anchor>
                         </div>
                     </div>
                 </>

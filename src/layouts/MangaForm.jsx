@@ -12,11 +12,11 @@ export default function MangasNew() {
     botton.preventDefault()
     let dates = {
       title:title.current.value,
-      category_idt:category_id.current.value,
+      category_id:category_id.current.value,
       description:description.current.value
     }
     console.log(dates)
-    axios.post(apiUrl+'mangas/comics',dates).then(res=>console.log(res))
+    axios.post(apiUrl+'/mangas-form',dates).then(res=>console.log(res))
   }
   return (
     <>

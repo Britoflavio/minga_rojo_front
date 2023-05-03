@@ -7,7 +7,8 @@ import MangasNew from "../src/layouts/MangaForm.jsx";
 const routes = createBrowserRouter([
   { path: '/',element:<Layout/>,
   children:[
-    {path: '/mangas',element:<MangasNew/>}
+    {path:'/',element:<Main/>},
+    {path: '/mangas-form',element:<MangasNew/>}
   ]}
 ])
 
