@@ -10,7 +10,7 @@ export default function Navbar(){
       setHide(!hide)
   }
   return(
-    <div className="flex justify-between items-center absolute w-full  2xl:px-28 2xl:py-8">
+    <div className="flex justify-between items-center  w-full  2xl:px-28 2xl:py-8">
     <button><img onClick={show} src={Menu} alt="" /></button>
     <div className=''>
       <img src={Logo} className="sm:hidden md:hidden" alt="" />
