@@ -5,6 +5,8 @@ import Tw from "../imagenes/Twitter.png"
 import Vm from "../imagenes/Vimeo.png"
 import Donate from "../imagenes/donate.png"
 import Logo from "../imagenes/logo-dos.png"
+import { Link as Anchor } from "react-router-dom"
+
 
 export default function Footer() {
 

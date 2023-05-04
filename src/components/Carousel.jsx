@@ -1,5 +1,7 @@
 import Izq from "../imagenes/izquierda.png"
 import Der from "../imagenes/derecha.png"
+import { Link as Anchor } from "react-router-dom"
+
 
 import { useState,useEffect } from "react"
 import axios from "axios"
