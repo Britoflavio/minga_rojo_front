@@ -11,7 +11,9 @@ export default function Navbar(){
       setHide(!hide)
   }
   return(
+
     <div className="flex justify-between items-center absolute w-full ">
+
     <button><img onClick={show} src={Menu} alt="" /></button>
     <div className=''>
       <img src={Logo} className="sm:hidden md:hidden" alt="" />

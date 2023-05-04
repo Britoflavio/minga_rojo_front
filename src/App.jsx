@@ -1,6 +1,7 @@
 import Main from './layouts/Main'
 import Index from './pages/Index'
 import apiUrl from '../api'
+import { Outlet } from 'react-router-dom'
 
 
 function App() {
@@ -11,8 +12,10 @@ function App() {
 
     <>
     
+
       <Index/>
     
+
     </>
 
     )
