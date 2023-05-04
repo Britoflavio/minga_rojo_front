@@ -12,8 +12,9 @@ function App() {
 
     <>
     
-    <Main/>
-      
+
+      <Index/>
+    
 
     </>
 
