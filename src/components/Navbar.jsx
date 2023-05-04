@@ -11,7 +11,7 @@ export default function Navbar(){
       setHide(!hide)
   }
   return(
-    <div className="flex justify-between items-center absolute w-full sm:px-8 sm:py-4 md:px-20 md:py-8 lg:px-20 lg:py-8 2xl:px-48 2xl:py-8 xl:px-20 xl:py-8">
+    <div className="flex justify-between items-center absolute w-full ">
     <button><img onClick={show} src={Menu} alt="" /></button>
     <div className=''>
       <img src={Logo} className="sm:hidden md:hidden" alt="" />
@@ -37,6 +37,7 @@ export default function Navbar(){
                         <Anchor className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" to="#">Comics</Anchor>
                         <Anchor className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" to="#">My comics</Anchor>
                         <Anchor className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" to="#">Favorites</Anchor>
+                         <Anchor className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" to="/mangas-form">New Manga</Anchor>
                         <Anchor className="w-[30vw] h-[40px] flex justify-center items-center text-white font-medium" to="#">Logout</Anchor>
                     </div>
                     

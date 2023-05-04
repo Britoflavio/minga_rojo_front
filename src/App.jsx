@@ -11,10 +11,8 @@ function App() {
 
     <>
     
-    
       <Index/>
     
-
     </>
 
     )
