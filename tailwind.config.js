@@ -35,6 +35,7 @@ module.exports = {
         // 'xl': {'min': '1024px', 'max': '1350px'},
         // // => @media (min-width: 1280px) { ... }
   
+
         // '2xl': {'min': '1351px'},
 
         // 'xl': {'min': '1024px', 'max': '1535px'},
@@ -42,6 +43,7 @@ module.exports = {
   
         // '2xl': '1536px'
         // => @media (min-width: 1536px) { ... }
+
       }
     }
   },

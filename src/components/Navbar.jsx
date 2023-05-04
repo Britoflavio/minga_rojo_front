@@ -11,13 +11,14 @@ export default function Navbar(){
       setHide(!hide)
   }
   return(
-    <div className="flex justify-between items-center absolute w-full  2xl:px-28 2xl:py-8">
+    <div className="flex justify-between items-center absolute w-full sm:px-8 sm:py-4 md:px-20 md:py-8 lg:px-20 lg:py-8 2xl:px-48 2xl:py-8 xl:px-20 xl:py-8">
     <button><img onClick={show} src={Menu} alt="" /></button>
     <div className=''>
       <img src={Logo} className="sm:hidden md:hidden" alt="" />
       <img src={LogoCelu} className="lg:hidden xl:hidden 2xl:hidden" alt="" />
     </div>
     {hide ? (
+
             <>
                 <div className="absolute w-screen sm:w-screen sm:h-screen self-start bg-fondo flex flex-col justify-start items-center xl:w-screen 2xl:w-full 2xl:left-0 2xl:top-0">
                     <div className="w-full flex justify-around items-center h-[15vh]">
@@ -29,6 +30,7 @@ export default function Navbar(){
                         <svg onClick={ show } className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" >
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
+
                     </div>
                     <div className="flex flex-col justify-start w-full items-center gap-y-4 sm:h-auto sm:text-center">
                         <Anchor className="bg-white rounded-md w-3/4 h-12 flex justify-center items-center text-fondo font-medium" to="#">Home</Anchor>
