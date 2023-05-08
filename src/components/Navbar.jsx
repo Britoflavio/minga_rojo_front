@@ -46,6 +46,7 @@ console.log(token)
       <img src={LogoCelu} className="md:hidden" alt="" />
     </div>
     {hide ? (
+
             <>
                 <div className="absolute w-screen sm:w-screen sm:h-screen self-start bg-fondo flex flex-col justify-start items-center xl:w-screen 2xl:w-full 2xl:left-0 2xl:top-0">
                     <div className="w-full flex justify-around items-center h-[15vh]">
@@ -57,6 +58,7 @@ console.log(token)
                         <svg onClick={ show } className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" >
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
+
                     </div>
                     <div className="flex flex-col justify-start w-full items-center gap-y-4 sm:h-auto sm:text-center">
                         <Anchor className="bg-white rounded-md w-3/4 h-12 flex justify-center items-center text-fondo font-medium" to="/">Home</Anchor>

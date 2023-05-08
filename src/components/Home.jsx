@@ -6,6 +6,7 @@ export default function Home() {
   return (
 
 
+
     <section className='md:px-[2%] sm:flex sm:justify-center sm:items-center sm:flex-col  
      md:flex-col md:justify-center text-white '>
       <h1 className='sm:text-5xl md:text-6xl text-6xl 2xl:text-8xl sm:text-center md:text-center lg:text-center font-bold'>For the love of manga</h1>
