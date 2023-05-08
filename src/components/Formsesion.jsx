@@ -4,8 +4,10 @@ import Googlesesion from './Googlesesion'
 import Homepagesesion from './Homepagesesion'
 import { useRef} from 'react'
 import axios from 'axios'
+
 import { Link as Anchor, useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2'
+
 
 
 
@@ -15,16 +17,19 @@ export default function Formsesion(e) {
     let password= useRef()
     console.log(email);
     console.log(password);
+
     let navigate=useNavigate()
     function handleform(e){
         e.preventDefault()
         
+2
         let data={
             email: email.current.value,
             password: password.current.value
         }
         axios.post("http://localhost:8000/auth/signin",data)
         .then(res=>{
+
 
 
             const Toast = Swal.mixin({
@@ -42,10 +47,12 @@ export default function Formsesion(e) {
                 icon: 'success',
                 title: 'User Logged',
             })
+
             localStorage
             .setItem('token',res.data.token)
             localStorage
             .setItem('user',JSON.stringify(res.data.user))
+
             navigate('/', { replace: true })
         })
         .catch(err=>{
@@ -54,6 +61,7 @@ export default function Formsesion(e) {
                 icon:"error",
                 title: err.response.data.message
             })
+
         })
     }
   return (
@@ -63,14 +71,18 @@ export default function Formsesion(e) {
                     <fieldset className="flex justify-between border-2 rounded-lg h-14">
                         <legend className="text-orange-600">Email</legend>
                         <input className="" type="email" placeholder="email " ref={email} />
+
                         <img className='h-5' src="src\imagenes\img@.png" alt="" />
+
                     </fieldset>
 
 
                     <fieldset className="flex justify-between border-2 rounded-lg h-14">
                         <legend className="text-orange-600">Password</legend>
                         <input className="  " type="password" placeholder="password" ref={password} />
+
                         <img className='h-5' src="src\imagenes\imglock.png" alt="" />
+
                     </fieldset>
                     
                     <div className=" flex justify-center flex-col items-center text-center py-2">

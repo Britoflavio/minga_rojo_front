@@ -5,10 +5,12 @@ import Homepage from "../components/homepage";
 import Google from "../components/google";
 import Form from "../components/Form";
 
+
 const SignUp = ()=>{
  
     return (
         <div className="">
+
                 <Navbar/>
             <div className="sm:h-screen sm:w-full sm:flex sm:justify-center         sm:items-center          h-screen w-full flex justify-center items-center">
                 
@@ -29,6 +31,7 @@ const SignUp = ()=>{
                 </div>
             </div>
         </div>
+
     )
 } 
 
