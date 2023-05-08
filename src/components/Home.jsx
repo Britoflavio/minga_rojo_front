@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as Anchor } from "react-router-dom"
-
+let token = localStorage.getItem('token')
 
 export default function Home() {
   return (
@@ -14,9 +14,12 @@ export default function Home() {
       
       
       
-      <div className='sm:w-3/4 sm:h-8 md:w-3/12  sm:flex sm:justify-center sm:items-center rounded bg-white text-primary font-semibold text-xl md:flex md:justify-center'>
+      {token?(
+        <div className='sm:w-3/4 sm:3/4 md:w-4/12 sm:flex sm:justify-center sm:items-center rounded bg-white text-primary font-semibold text-xl md:flex md:justify-center'>
+        <Anchor to="/" >Explore Mangas!</Anchor>
+        </div>):(<div className='sm:w-3/4 sm:h-8 md:w-3/12  sm:flex sm:justify-center sm:items-center rounded bg-white text-primary font-semibold text-xl md:flex md:justify-center'>
       <Anchor to="/Login" >Login!</Anchor>
-      </div>
+      </div>)}
     </section>
   )
 }
