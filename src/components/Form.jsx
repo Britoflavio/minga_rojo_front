@@ -1,9 +1,13 @@
 import React from 'react'
 import Google from './google'
 import Homepage from './homepage'
-import { Link as Anchor } from "react-router-dom"
+
+import { Link as Anchor, useNavigate } from "react-router-dom"
 import {useRef} from 'react'
 import axios from 'axios'
+import Swal from 'sweetalert2'
+
+
 
 
 export default function Form() {
@@ -11,7 +15,10 @@ export default function Form() {
     let email= useRef()
     let photo= useRef()
     let password= useRef()
-    let rol= useRef()
+
+    let role= useRef()
+    let navigate = useNavigate()
+
 
     function handleform(e){
         e.preventDefault()
@@ -23,13 +30,35 @@ export default function Form() {
             password: password.current.value,
         }
         axios.post("http://localhost:8000/auth/signup",data)
-        .then(res=>{
-            console.log('respuesta joi',res)
-            console.log(res)
-        })
+
+        .then(res => {console.log(res)
+            
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'center',
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              Toast.fire({
+                icon: 'success',
+                title: 'User Registred!',
+              })
+              navigate('/')}
+          )
         .catch(err=>{
-            console.log(err.response.data.message)
-        alert(err.response.data.message)
+           
+            Swal.fire({
+                        icon:"error",
+                        title: err.response.data.message
+                    })
+        
+
         })
     }
   return (
@@ -38,19 +67,25 @@ export default function Form() {
                     <fieldset className="flex justify-between border-2 rounded-lg h-14">
                         <legend className="text-orange-600">Email</legend>
                         <input ref={email} className="" type="email" placeholder="email" />
-                        <img src="src\imagenes\img@.png" alt="" />
+
+                        <img className='h-5' src="src\imagenes\img@.png" alt="" />
+
                     </fieldset>
 
                     <fieldset className="flex justify-between border-2 rounded-lg h-14">
                         <legend className="text-orange-600">Photo</legend>
                         <input ref={photo} className="" type="text" placeholder="photo" />
-                        <img src="src\imagenes\imgcam.png" alt="" />
+
+                        <img className='h-5' src="src\imagenes\imgcam.png" alt="" />
+
                     </fieldset>
 
                     <fieldset className="flex justify-between border-2 rounded-lg h-14">
                         <legend className="text-orange-600">Password</legend>
                         <input ref={password} className="  " type="password" placeholder="password" />
-                        <img src="src\imagenes\imglock.png" alt="" />
+
+                        <img className='h-5' src="src\imagenes\imglock.png" alt="" />
+
                     </fieldset>
                     
                     <div className=" flex justify-center flex-col items-center text-center py-2">

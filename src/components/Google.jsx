@@ -3,7 +3,11 @@ import React from 'react'
 export default function google() {
   return (
     <label>
-    <button  className='flex px-6 items-center  h-8 md:w-3/4 lg:w-1/2 xl:w-3/12 2xl:w-2/12  rounded border-2 bg-white text-stone-400 font-semibold text-sm'> <img src="src\imagenes\imgGoogle.png" alt="" /> Sign in whith Google</button>
+
+    <button  className='sm:flex sm:px-9 sm:items-center  sm:h-10   sm:rounded sm:border-2 sm:bg-white sm:text-stone-400 sm:font-semibold sm:text-sm    
+
+md:flex md:px-10 md:items-center  md:h-8   md:rounded md:border-2 md:bg-white md:text-stone-400 md:font-semibold md:text-sm '> <img src="src\imagenes\imgGoogle.png" alt="" /> Sign in whith Google</button>
+
     </label>
   )
 }
