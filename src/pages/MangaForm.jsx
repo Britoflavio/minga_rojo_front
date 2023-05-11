@@ -3,15 +3,57 @@ import { useRef } from "react";
 import axios from "axios";
 import apiUrl from "../../api";
 import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import actions from "../../store/actions/mangaForm";
+
+const {formManga}= actions
 
 export default function MangasNew() {
+  useEffect(
+    ()=>{
+      axios(apiUrl+'categories').then(res=>setCategories(res.data.categories)).catch(err=>console.log(err))
+    },
+    []
+    )
+
+    /* useSelector(store=>store) */
+   /*  console.log(useSelector) */
+    const reduxData =  useSelector(store=>store.formManga)
+    
+    const dispatch = useDispatch()   
+    function saveData(){
+      let dates = {
+        title:title.current.value,
+        category:category_id.current.value,
+        description:description.current.value
+      }
+      console.log(dates)
+      dispatch(formManga(dates))
+    }
+    let [categories,setCategories] = useState([])
+    const categoryId = () =>{
+      return categories.map(categorias=> <option key={categorias._id} value={categorias._id}>{categorias.name}</option>);
+    }
+
+
+
   const title = useRef()
   const category_id = useRef()
   const description = useRef()
-
+  
   function handlerForm(botton){
     botton.preventDefault()
-    if ((title.current.value.length <= 5 || title.current.value.length >= 15 ) ||  (description.current.value.length <= 10) || description.current.value.length >= 75) {
+    let dates = {
+      title:title.current.value,
+      category_id:category_id.current.value,
+      description:description.current.value
+    }
+
+   
+
+
+    console.log(dates)
+/*     if ((title.current.value.length <= 5 || title.current.value.length >= 15 ) ||  (description.current.value.length <= 10) || description.current.value.length >= 75) {
       Swal.fire({
       title:"Upssss",
       text:"Failed to create Manga",
@@ -23,27 +65,40 @@ export default function MangasNew() {
         title:'Your new manga has been create successfully',
         icon:"success"
       })
-    }
-    let dates = {
-      title:title.current.value,
-      category_id:category_id.current.value,
-      description:description.current.value
-    }
-    console.log(dates)
-    axios.post(apiUrl+'mangas',dates).then(res=>console.log(res)).catch(err=>console.log(err))
-
+    } */
+    axios.post('http://localhost:8000/mangas',dates)
+    .then(res => {
+        console.log(res)
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000,
+          width: "400px",
+          timerProgressBar: true,
+        })
+        Toast.fire({
+          icon: 'success',
+          title: 'Your manga was successfully created',
+        })
+      })
+    .catch(error=>{
+      error.response.data.message
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'center',
+        width: "400px",
+      })
+      Toast.fire({
+        icon: 'error',
+        title: 'Upps',
+        text: error.response.data.message.join('\n')
+      })
+    })
+    
+    
   }
-  useEffect(
-    ()=>{
-      axios(apiUrl+'categories').then(res=>setCategories(res.data.categories)).catch(err=>console.log(err))
-      },
-      []
-    )
-    let [categories,setCategories] = useState([])
-    const categoryId = () =>{
-      return categories.map(categorias=> <option key={categorias._id} value={categorias._id}>{categorias.name}</option>)
-    }
-
+      
   return (
     <>
 
@@ -51,16 +106,16 @@ export default function MangasNew() {
       <h1 className="text-5xl font-normal sm:text-4xl py-20">New Mangas</h1>
       <form onSubmit={handlerForm} className="w-2/5 h-2/4 flex flex-col justify-around items-center">
         <div>
-          <input className="w-96 sm:w-56 border-b-2 bg-slate-200 border-black px-4 py-2 rounder" type="text" placeholder="Insert title"ref={title}/>
+          <input defaultValue={reduxData.title} onKeyUp={saveData} className="w-96 sm:w-56 border-b-2 bg-slate-200 border-slate-500 px-4 py-2 rounder" type="text" placeholder="Insert title"ref={title}/>
         </div>
         <div>
-          <select className="w-96 sm:w-56 border-b-2 bg-slate-200 border-black px-4 py-2 rounder"  ref={category_id}> 
+          <select defaultValue={reduxData.category} onChange={saveData} className="w-96 sm:w-56 border-b-2 bg-slate-200 border-slate-500 px-4 py-2 rounder"  ref={category_id}> 
             <option>Insert Category</option>
             {categoryId()}
           </select>
         </div>
         <div>
-          <textarea className="w-96 sm:w-56 border-b-2 bg-slate-200 border-black  px-4 py-2 rounder" type="text" placeholder="Insert description"ref={description}></textarea>
+          <textarea defaultValue={reduxData.description} onKeyUp={saveData} className="w-96 sm:w-56 border-b-2 bg-slate-200 border-slate-500  px-4 py-2 rounder" type="text" placeholder="Insert description"ref={description}></textarea>
         </div>
         <button type="submit">
         <svg width="280" height="63" viewBox="0 0 280 63" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,6 +134,4 @@ export default function MangasNew() {
     
     </>
   )
-
 }
-

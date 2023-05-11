@@ -1,30 +1,20 @@
-
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import { Outlet, useLocation } from 'react-router-dom'
-import { Link as Anchor } from "react-router-dom"
-
-
-export default function Main() {
-  const location = useLocation()
-
-
+import { useLocation } from 'react-router-dom'
 
 export default function Main() {
   const location = useLocation()
   if (location.pathname !== '/'){
 
-    return <Outlet/>
+    /* return <Outlet/> */
   }
   return (
     <>
     
     <Navbar/>
-    <Outlet/>
+      <Outlet/>
     <Footer/>
-
-    
 
     </>
   )
