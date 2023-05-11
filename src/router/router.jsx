@@ -5,6 +5,7 @@ import Register from '../pages/Register.jsx'
 import Login from '../pages/Login.jsx';
 import ChaptersForm from "../pages/ChaptersForm.jsx";
 import Mangaform from "../pages/MangaForm.jsx"
+import Page_chapters from "../components/Page_chapters.jsx";
 
 
 const routes = createBrowserRouter([
@@ -15,7 +16,8 @@ const routes = createBrowserRouter([
         {path:'/register',element:<Register/>},
         {path:'/login',element:<Login/>},
         {path: '/chapter-form/:id_manga', element:<ChaptersForm/>},
-        {path: '/mangas_form',element:<Mangaform/>}
+        {path: '/mangas_form',element:<Mangaform/>},
+        {path: '/chapters/:id/:page',element:<Page_chapters/>}
 
     ]}
 ])

@@ -24,10 +24,12 @@ export default function ChaptersForm() {
     .then(res=>{console.log(res)
       console.log(res);
     })
-    .catch(err=>{console.log(err.response.data.message)
-      swal({
+    
+    .catch(err=>{
+      console.log(err.response)
+       swal({
         title:'Error',
-        text: err.response.data.message,
+        text: err.response.data.message.join('\n') ,
         icon: 'error'
       })
     })
@@ -45,7 +47,7 @@ export default function ChaptersForm() {
           <h2 className='text-4xl' >New chapter</h2>
           <div className='mt-10'>
             <div className='border-b-2 border-black border-opacity-50' >
-              <input type="text" ref={title} placeholder='Insert tittle' />
+              <input type="text" ref={title} placeholder='Insert title' />
             </div>
             <div className='border-b-2 border-black border-opacity-50 mt-5' >
               <input type="number" ref={order} placeholder='Insert order'/>
