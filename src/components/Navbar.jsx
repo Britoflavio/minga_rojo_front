@@ -37,7 +37,7 @@ console.log(token)
 
 
   return(
-    <div className="w-11/12 flex  justify-between  items-center absolute">
+    <div className="w-full flex  justify-between  items-center absolute">
         <button><img onClick={show} src={Menu} alt="" /></button>
         <div className=''>
             <img src={Logo} className="sm:hidden" alt="" />

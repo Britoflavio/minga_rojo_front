@@ -14,6 +14,7 @@ module.exports = {
         'Popular':"url('./imagenes/popular.png')",
         'Adventure':"url('./imagenes/adventure.png')",
         'MangasFondo':"url('./imagenes/mangasfondo.png')",
+        'MangasFondoDos':"url('./imagenes/xlMangasfondo.png')",
         'fondo': 'linear-gradient(162.88deg, #FF5722 -11.37%, #F97316 73.97%)',
         'bgsignup': "url('./imagenes/imgsignup.png')",
 
