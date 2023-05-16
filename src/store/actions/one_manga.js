@@ -1,18 +1,18 @@
 import { createAction } from "@reduxjs/toolkit";
 
-const save_reading = createAction(
-    'save_reading', 
+const one_manga = createAction(
+    'one_manga',
     (objeto)=>{
         return{
             payload:{
                 title: objeto.title,
-                page: objeto.page,
-                manga: objeto.manga_id
+                cover_photo: objeto.cover_photo,
+                description: objeto.description
             }
         }
     }
-
 )
 
-const actions = {save_reading}
+const actions = {one_manga}
+
 export default actions

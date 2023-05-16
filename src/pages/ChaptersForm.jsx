@@ -41,7 +41,7 @@ export default function ChaptersForm() {
   return (
     <>
     <div>
-      <Navbar/>
+    
       
         <form onSubmit={(event)=>handleform(event)} className='flex flex-col items-center justify-center h-[50vh] ' >
           <h2 className='text-4xl' >New chapter</h2>

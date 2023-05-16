@@ -10,10 +10,9 @@ import { Link as Anchor } from "react-router-dom"
 
 export default function Main() {
   const location = useLocation()
-  if (location.pathname !== '/'){
-
+  if (["/Login","/register"].includes(location.pathname)){ 
     return <Outlet/>
-  }
+ }
   return (
     <>
     
