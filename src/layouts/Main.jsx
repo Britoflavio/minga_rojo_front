@@ -1,5 +1,3 @@
-
-
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { Outlet, useLocation } from 'react-router-dom'
@@ -17,7 +15,7 @@ export default function Main() {
     <>
     
     <Navbar/>
-    <Outlet/>
+      <Outlet/>
     <Footer/>
 
     

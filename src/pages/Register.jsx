@@ -11,7 +11,7 @@ const SignUp = ()=>{
     return (
         <div className="">
 
-                <Navbar/>
+ 
             <div className="sm:h-screen sm:w-full sm:flex sm:justify-center         sm:items-center          h-screen w-full flex justify-center items-center">
                 
                 <div className="sm:h-screen sm:w-full
@@ -24,7 +24,6 @@ const SignUp = ()=>{
                     </div>
                     
                 <Form/>
-
                 </div>
 
                 <div className="sm:hidden h-screen w-1/2 bg-cover bg-center bg-no-repeat bg-bgsignup">

@@ -40,7 +40,7 @@ console.log(token)
 
 
   return(
-    <div className="md:px-8 flex justify-between items-center  w-full  2xl:px-28 2xl:py-8">
+    <div className="absolute md:px-8 flex justify-between items-center  w-full  2xl:px-28 2xl:py-8">
 
     <button><img onClick={show} src={Menu} alt="" /></button>
     <div className=''>
