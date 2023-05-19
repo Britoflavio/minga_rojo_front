@@ -1,14 +1,26 @@
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { Outlet, useLocation } from 'react-router-dom'
-import { Link as Anchor } from "react-router-dom"
-
+import { useDispatch,useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import actions  from "../store/actions/token"
 
 
 
 export default function Main() {
+  
+  const dispatch= useDispatch()
+  const store = useSelector(store=>store)
+  console.log(store)
+  useEffect(()=>{
+    console.log(actions)
+    dispatch(actions.token())
+  },
+  [])
+
+
   const location = useLocation()
-  if (["/Login","/register"].includes(location.pathname)){ 
+  if (["/Login","/Register"].includes(location.pathname)){ 
     return <Outlet/>
  }
   return (
@@ -17,8 +29,6 @@ export default function Main() {
     <Navbar/>
       <Outlet/>
     <Footer/>
-
-    
 
     </>
   )

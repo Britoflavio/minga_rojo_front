@@ -4,7 +4,6 @@ import Googlesesion from './Googlesesion'
 import Homepagesesion from './Homepagesesion'
 import { useRef} from 'react'
 import axios from 'axios'
-
 import { Link as Anchor, useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2'
 
@@ -15,23 +14,19 @@ export default function Formsesion(e) {
     
     let email= useRef()
     let password= useRef()
-    console.log(email);
-    console.log(password);
+    /* console.log(email);
+    console.log(password); */
 
     let navigate=useNavigate()
     function handleform(e){
         e.preventDefault()
         
-2
         let data={
             email: email.current.value,
             password: password.current.value
         }
         axios.post("http://localhost:8000/auth/signin",data)
         .then(res=>{
-
-
-
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'center',
@@ -52,7 +47,6 @@ export default function Formsesion(e) {
             .setItem('token',res.data.token)
             localStorage
             .setItem('user',JSON.stringify(res.data.user))
-
             navigate('/', { replace: true })
         })
         .catch(err=>{

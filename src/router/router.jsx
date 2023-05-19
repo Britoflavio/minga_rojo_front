@@ -8,20 +8,21 @@ import Mangaform from "../pages/MangaForm.jsx"
 import Page_chapters from "../pages/Page_chapters.jsx";
 import MangasCreate from "../pages/Mangas.jsx";
 import Manga from "../pages/Manga.jsx";
+import FavMangas from "../pages/Mymangas.jsx"
 
 const routes = createBrowserRouter([
     {path: "/",
      element:<Layout/>,
      children:[
         {path:'/', element:<Main/>},
-        {path:'/register',element:<Register/>},
-        {path:'/login',element:<Login/>},
+        {path:'/Register',element:<Register/>},
+        {path:'/Login',element:<Login/>},
         {path: '/chapter-form/:id_manga', element:<ChaptersForm/>},
-        {path: '/mangas_form',element:<Mangaform/>},
+        {path: '/mangas-form',element:<Mangaform/>},
         {path: '/chapters/:id/:page',element:<Page_chapters/>},
         {path:'/mangas/:page',element:<MangasCreate/>},
-        {path: '/mangas/manga/:id',element:<Manga/>}
-
+        {path: '/mangas/manga/:id',element:<Manga/>},
+       {path:'/mymangas', element: <FavMangas/>}
     ]}
 ])
  export default routes

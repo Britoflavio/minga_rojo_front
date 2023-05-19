@@ -1,7 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 
 const mangasFilter = createAction(
-    'mangasFilter', 
+    'token', 
     (objeto)=>{     
         return {
             payload:{

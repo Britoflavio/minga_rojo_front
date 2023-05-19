@@ -33,7 +33,7 @@ useEffect(
   },
   [reload, page,count]
   )
-  console.log(count)
+  console.log(mangas)
   useEffect(
   ()=>{
     axios(apiUrl+'categories')
@@ -48,15 +48,14 @@ const dispatch = useDispatch()
 
 function checkedId(){
   let categories = Object.values(category_id.current)
-    let values = []
-      categories.forEach(each=>{
+  let values = []
+    categories.forEach(each=>{
         if(each.checked){
           values.push(each.value)
         }
       })
       return values
 }
-
 function sendData() {
   let data = {
     title: search.current.value,
@@ -78,7 +77,7 @@ const checkbox = (event)=> {
     id: category._id,
     name: category.name
   }));
-  setReload(!reload)
+
  
 }
   return(

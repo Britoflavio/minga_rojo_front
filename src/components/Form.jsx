@@ -1,7 +1,6 @@
 import React from 'react'
 import Google from './google'
 import Homepage from './homepage'
-
 import { Link as Anchor, useNavigate } from "react-router-dom"
 import {useRef} from 'react'
 import axios from 'axios'

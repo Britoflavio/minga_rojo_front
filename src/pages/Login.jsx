@@ -1,15 +1,11 @@
-import { defaults } from "autoprefixer";
 import React from "react";
-import Navbar from "../components/Navbar";
-import Homepage from "../components/homepage";
-import Google from "../components/google";
 import Formsesion from "../components/formsesion";
 
 
 const SignIn = ()=>{
     return (
     <div>
-        <div className="sm:h-screen sm:w-full sm:flex sm:justify-center         sm:items-center          h-screen w-full flex justify-center items-center">
+        <div className="sm:h-screen sm:w-full sm:flex sm:justify-center sm:items-center h-screen w-full flex justify-center items-center">
             <div className="sm:hidden h-screen w-1/2 bg-cover bg-center bg-no-repeat bg-bgsignup">
             </div>
             <div className="sm:h-screen sm:w-full h-screen w-1/2 flex justify-center flex-col">
