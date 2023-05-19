@@ -44,7 +44,7 @@ export default function Page_chapters() {
         if (Number(page) > 0) {
           navigate(`/chapters/${id}/${Number(page) - 1}`);
         } else {
-          navigate(`/mangas/${mangaId}`);
+          navigate(`/mangas/manga/${mangaId}`);
         }
       }
 

@@ -4,6 +4,8 @@ import reducermangaForm from './reducers/mangaForm'
 import reducermangasFilter from './reducers/mangas'
 import reducerOneManga from './reducers/one_manga'
 import reducerOneChapter from './reducers/one_chapter'
+import read_chapters from "./reducers/chapters"
+
 
 const store = configureStore({
     reducer:{
@@ -11,7 +13,10 @@ const store = configureStore({
         formManga:reducermangaForm,
         mangasFilter:reducermangasFilter,
         oneManga:reducerOneManga,
-        oneChapter:reducerOneChapter
+        oneChapter:reducerOneChapter,
+        chapters: read_chapters
+
+
     }
 })
 
