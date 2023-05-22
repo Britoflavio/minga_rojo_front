@@ -5,23 +5,58 @@ import apiUrl from "../../../api";
 const token = createAsyncThunk(
     'token', 
     async ()=>{  
-      console.log(`me ejecute papu`)
-     
      try {
       let token = localStorage.getItem('token')
       let headers = { headers: { 'Authorization': `Bearer ${token}` } }
       let res = await axios.post(apiUrl + 'auth/token' ,{},headers)   
-      console.log(res)
+     
         return {
              user:res.data.user,
              token:res.data.token
         }
      } catch (error) {
-        alert(error)
+        
      }
     }
 )
+const logout = createAsyncThunk(
+  'logout', 
+  async ()=>{  
+   try {
+    let token = localStorage.getItem('token')
+    let headers = {headers:{'Authorization':`Bearer ${token}`}}
+    await axios.post(apiUrl+'auth/signout',null,headers)
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+      return {
+           user:null,
+           token:null
+      }
+   } catch (error) {
+      
+   }
+  }
+)
 
-const actions = {token:token}
+const signin = createAsyncThunk(
+  'signin', 
+  async (data)=>{  
+   try {
+    let res = await axios.post("http://localhost:8000/auth/signin",data)
+      localStorage.setItem('token',res.data.token)
+      localStorage.setItem('user',JSON.stringify(res.data.user))
+      
+      return {
+           user:res.data.user,
+           token:res.data.token
+      }
+   } catch (error) {
+      
+   }
+  }
+)
+
+
+const actions = {token,logout,signin}
 
 export default actions

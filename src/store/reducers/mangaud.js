@@ -33,19 +33,35 @@ const reducer = createReducer(
   .addCase(
     manga_update.fulfilled,
     (state, action) => {
+      let mangas = state.manga.map(manga =>{
+        if(manga._id === action.payload.manga._id){
+          return action.payload.manga
+        }
+        else{
+          return manga
+        }
+      })
       let newState = {
         ...state,
-        manga: state.manga.map(manga =>{
-          if(manga._id === action.payload.manga._id){
-            return action.payload.data
-          }
-          else{
-            return manga
-          }
-        })
+        manga: mangas
       }
       return newState
     }
   )
 )
 export default reducer
+
+/* .addCase(
+    manga_update.fulfilled,
+    (state, action) => {
+      
+      let mangas  = state.manga.filter( manga => manga._id !== action.payload.manga._id)
+      mangas.unshift(action.payload.manga)
+      console.log(mangas)
+      let newState = {
+        ...state,
+        manga: mangas
+      }
+      return newState
+    }
+  ) */

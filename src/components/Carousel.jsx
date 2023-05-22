@@ -5,26 +5,27 @@ import axios from "axios"
 import apiUrl from "../../api"
 
 export default function Carousel() {
-useEffect(
-  ()=>{ axios(apiUrl+'categories').then(res=>setCategories(res.data.categories)).catch(err=>console.log(err)) },
-  [] //Array de dependencia vacio porque ftecheamos una vez y esos datos luego no cambian
-)
-let [categories,setCategories] = useState([])
+  let [categories,setCategories] = useState([])
+  let [counter, setCounter] = useState(0)
 
-let [counter, setCounter] = useState(0)
-let sumar = () => {
-  setCounter(counter + 1)
-  if (counter === categories.length-1) {
+  useEffect(
+    ()=>{ axios(apiUrl+'categories').then(res=>setCategories(res.data.categories)).catch(err=>console.log(err)) },
+    []
+  )
+  
+  let sumar = () => {
+      setCounter(counter + 1)
+      if (counter === categories.length-1) {
       setCounter(0)
-      /*  clearInterval(timer) */
-    }
-}
-let restar = () => {
-  setCounter(counter - 1)
-  if (counter === 0) {
-  setCounter(categories.length-1)
+      }
   }
-}
+  let restar = () => {
+    setCounter(counter - 1)
+    if (counter === 0) {
+    setCounter(categories.length-1)
+    }
+  }
+
   return (
 
   <section className='sm:hidden md:hidden flex justify-center items-center h-2/5 bg-slate-200' >
@@ -41,6 +42,5 @@ let restar = () => {
       <button  className='2xl:w-28 2xl:flex 2xl:items-center 2xl:justify-center'><img onClick={sumar} src={Der} alt="" /></button>
     </div>
   </section>  
-
   )
 }

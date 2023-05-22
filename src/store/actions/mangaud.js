@@ -47,16 +47,16 @@ const manga_update = createAsyncThunk('manga_update', async ({id, data}) => {
     let headers = { headers: { 'Authorization': `Bearer ${token}` } }
     let url = apiUrl + "mangas/" + id ;
     let res = await axios.put(url, data, headers)
-    console.log(response)
     //mas allá de la respuesta de la peticion necesito enviar algun parametro hacia el reductor
     //para poder quitar con filter el objeto que se eliminó de la base de datos del array
+    console.log(res.data.manga)
     return{
       manga: res.data.manga
     }
   } catch (error) {
     Swal.fire({
       icon:'error',
-      title:`no  funciona`
+      title:error.response.data.message
     })
   }
 })

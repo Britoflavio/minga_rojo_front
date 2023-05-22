@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link as Anchor } from "react-router-dom"
 
-let token = localStorage.getItem('token')
 
 export default function Home() {
+  let token = localStorage.getItem('token')
   return (
 
     <section className='sm:flex sm:justify-center sm:items-center sm:flex-col md:flex md:flex-col md:justify-center md:items-center text-white 2xl:mx-28 lg:mx-12 xl:mx-16'>

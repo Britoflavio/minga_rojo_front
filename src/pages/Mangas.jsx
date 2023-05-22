@@ -33,7 +33,7 @@ useEffect(
   },
   [reload, page,count]
   )
-  console.log(mangas)
+ 
   useEffect(
   ()=>{
     axios(apiUrl+'categories')
@@ -129,7 +129,7 @@ const checkbox = (event)=> {
             {mangas && mangas.length > 0 ? (
               mangas?.map((manga=>
                 <>
-                  <div key={manga._id} className="bg-white drop-shadow-xl mt-4 rounded-2xl ml-4 mr-4">
+                  <div key={manga._id} className="bg-white shadow-xl mt-4 rounded-2xl ml-4 mr-4">
                     <div className="flex h-48 lg:h-56 xl:h-48 2xl:h-56">
                       <div className='flex items-center'>
                         <div className='border-l-8 h-2/3' style={{ borderColor: manga.category_id.color }}></div>

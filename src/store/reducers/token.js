@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import actions from "../actions/token";
 
-const {token} = actions 
+const {token,logout,signin} = actions 
 
 let inicialState = {
     user:null,
@@ -14,13 +14,34 @@ const reducer = createReducer(
     .addCase(
       token.fulfilled,
       (state,action)=>{
-        console.log(action)
         let newState={
               ...state,
               user:action.payload.user,
               token:action.payload.token
             }
         return newState
+    }
+  )
+  .addCase(
+    logout.fulfilled,
+    (state,action)=>{
+      let newState={
+        ...state,
+        user:action.payload.user,
+        token:action.payload.token
+      }
+      return newState
+    }
+  )
+  .addCase(
+    signin.fulfilled,
+    (state,action)=>{
+      let newState={
+        ...state,
+        user:action.payload.user,
+        token:action.payload.token
+      }
+      return newState
     }
   )
 )

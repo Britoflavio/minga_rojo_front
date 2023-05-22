@@ -11,9 +11,7 @@ export default function Main() {
   
   const dispatch= useDispatch()
   const store = useSelector(store=>store)
-  console.log(store)
   useEffect(()=>{
-    console.log(actions)
     dispatch(actions.token())
   },
   [])

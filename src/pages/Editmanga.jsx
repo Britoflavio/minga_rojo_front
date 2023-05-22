@@ -1,6 +1,5 @@
 import { Fragment, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Link as Anchor } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
 import React from 'react'
 import manga_action from '../store/actions/mangaud'
@@ -9,13 +8,11 @@ import Swal from 'sweetalert2';
 const { manga_update } = manga_action
 
 
-export default function Editmanga({ open, setOpen}) {
+export default function Editmanga({ open, setOpen,mangaId}) {
 
-const categories = useSelector(store => store.categories.categories)
-
-const mangas = useSelector(store => store.manga.manga)
-
-  const cancelButtonRef = useRef(null);
+  const categories = useSelector(store => store.categories.categories)
+  const mangas = useSelector(store => store.manga.manga)
+  const cancelButtonRef = useRef(null)
   const dispatch = useDispatch()
 
   const [titleValue, setTitleValue] = useState(mangas.title);
@@ -23,19 +20,16 @@ const mangas = useSelector(store => store.manga.manga)
   const [coverPhotoValue, setCoverPhotoValue] = useState(mangas.cover_photo);
   const [categoryIdValue, setCategoryIdValue] = useState(mangas.category_id);
 
-  
+
   const handleTitleChange = (event) => {
     setTitleValue(event.target.value)
   }
-
   const handleDescriptionChange = (event) => {
     setDescriptionValue(event.target.value)
   }
-
   const handleCoverPhotoChange = (event) => {
     setCoverPhotoValue(event.target.value)
   }
-
   const handleCategoryIdChange = (event) => {
     setCategoryIdValue(event.target.value)
   }
@@ -49,14 +43,12 @@ const mangas = useSelector(store => store.manga.manga)
 
 
   const editManga = (id) => {
-   
     const data = {
       title: titleValue,
       description: descriptionValue,
       cover_photo: coverPhotoValue,
       category_id: categoryIdValue
     }
-    console.log(data)
     Swal.fire({
       title: 'Do you want to save the changes?',
       showDenyButton: true,
@@ -64,19 +56,15 @@ const mangas = useSelector(store => store.manga.manga)
       confirmButtonText: 'Save',
       denyButtonText: `Don't save`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        
-        Swal.fire('Saved!', '', 'success')
-        dispatch(manga_update({ id, data }))
+        Swal.fire('Your manga was successfully updated!', '', 'success')
+        dispatch(manga_update({id:mangaId , data }))
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')
       }
     })
     setOpen(false)
   }
-
-
   const cancel = () => {
     setOpen(false)
   }
