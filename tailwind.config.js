@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       backgroundImage:{
         'Pensible': "url('./imagenes/pensibe.png')",
+        'Modal': "url('./imagenes/modalbg.png')",
         'Further': "url('./imagenes/further.png')",
         'Mymanga': "url('./imagenes/fondomymanga.png')",
         'Bgentero': "url('./imagenes/bg-1.png')",

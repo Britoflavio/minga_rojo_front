@@ -1,8 +1,4 @@
-import { defaults } from "autoprefixer";
 import React, { useRef } from "react";
-import Navbar from "../components/Navbar";
-import Homepage from "../components/homepage";
-import Google from "../components/google";
 import Form from "../components/Form";
 
 

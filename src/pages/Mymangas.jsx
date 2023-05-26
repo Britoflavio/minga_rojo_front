@@ -4,16 +4,14 @@ import actions from "../store/actions/mangas";
 import categories_read from "../store/actions/categories"
 import mangas_actions from "../store/actions/mangaud"
 import Swal from "sweetalert2";
-import { Link as Anchor, Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Link as Anchor, useNavigate, useParams } from 'react-router-dom'
 import Editmangas from "./Editmanga";
-
 
 const  {categoriesRead} = categories_read
 const {manga_delete, manga_read,manga_update} = mangas_actions
 const {mangasFilter} = actions
 
 export default function MangasCreate(){
-
 
 const [reload,setReload] =useState(false)
 const [open,setOpen] = useState(false)

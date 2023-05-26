@@ -15,20 +15,17 @@ export default function Main() {
     dispatch(actions.token())
   },
   [])
-
-
   const location = useLocation()
-  if (["/Login","/Register"].includes(location.pathname)){ 
+  if (["/login","/register"].includes(location.pathname)){ 
     return <Outlet/>
  }
   return (
     <>
     
     <Navbar/>
-      <Outlet/>
+      <Outlet/> 
     <Footer/>
 
     </>
   )
 }
-

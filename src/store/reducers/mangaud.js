@@ -50,18 +50,3 @@ const reducer = createReducer(
   )
 )
 export default reducer
-
-/* .addCase(
-    manga_update.fulfilled,
-    (state, action) => {
-      
-      let mangas  = state.manga.filter( manga => manga._id !== action.payload.manga._id)
-      mangas.unshift(action.payload.manga)
-      console.log(mangas)
-      let newState = {
-        ...state,
-        manga: mangas
-      }
-      return newState
-    }
-  ) */

@@ -4,7 +4,6 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import swal from 'sweetalert'
 
-
 export default function ChaptersForm() {
   let id = useParams()
   let title = useRef()
@@ -13,7 +12,6 @@ export default function ChaptersForm() {
 
   function handleform(event){
     event.preventDefault()
-
     let data ={
       manga_id: id.id_manga,
       title: title.current.value,
@@ -31,10 +29,7 @@ export default function ChaptersForm() {
         icon: 'error'
       })
     })
-   
-    
   }
-
 
   return (
     <>
@@ -58,14 +53,8 @@ export default function ChaptersForm() {
           <div className='mt-10'>
             <input className='text-white bg-gradient-to-r from-[#F97316] to-[#FF5722] py-[1rem] px-[5rem] rounded-full text-bold text-lg cursor-pointer' type="submit" value="Send" />
           </div>
-          
-          
         </form>
-      
-      
     </div>
-    
-    
     </>
   )
 }
