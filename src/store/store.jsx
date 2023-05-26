@@ -10,6 +10,7 @@ import reducerToken from "./reducers/token"
 import reducerAuthors from "./reducers/authors"
 import reducerCompanies from "./reducers/companies"
 
+
 const store = configureStore({
     reducer:{
         reading: reducerReading,
