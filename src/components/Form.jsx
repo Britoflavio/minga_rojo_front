@@ -11,12 +11,10 @@ import Swal from 'sweetalert2'
 
 
 export default function Form() {
-    let name= useRef()
+   
     let email= useRef()
     let photo= useRef()
     let password= useRef()
-
-    let role= useRef()
     let navigate = useNavigate()
 
 
@@ -24,11 +22,13 @@ export default function Form() {
         e.preventDefault()
        
 
-        let data={
-            photo:photo.current.value,
-            email: email.current.value,
-            password: password.current.value,
-        }
+        let data= new FormData()
+        data.append('email',email.current.value)
+        data.append('photo',photo.current.files[0])
+        data.append('password',password.current.value)
+        
+
+
         axios.post("http://localhost:8000/auth/signup",data)
 
         .then(res => {console.log(res)
@@ -74,7 +74,7 @@ export default function Form() {
 
                     <fieldset className="flex justify-between border-2 rounded-lg h-14">
                         <legend className="text-orange-600">Photo</legend>
-                        <input ref={photo} className="" type="text" placeholder="photo" />
+                        <input ref={photo} className="" type="file" placeholder="photo" />
 
                         <img className='h-5' src="src\imagenes\imgcam.png" alt="" />
 

@@ -1,68 +1,55 @@
 import React from 'react'
-import Homepage from './homepage'
 import Googlesesion from './Googlesesion'
 import Homepagesesion from './Homepagesesion'
 import { useRef} from 'react'
-import axios from 'axios'
-
 import { Link as Anchor, useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2'
+import { useDispatch } from 'react-redux'
+import actions from '../store/actions/token'
 
 
 
 
 export default function Formsesion(e) {
-    
+    let dispatch = useDispatch()
     let email= useRef()
     let password= useRef()
-    console.log(email);
-    console.log(password);
 
     let navigate=useNavigate()
     function handleform(e){
         e.preventDefault()
         
-2
         let data={
             email: email.current.value,
             password: password.current.value
         }
-        axios.post("http://localhost:8000/auth/signin",data)
-        .then(res=>{
-
-
-
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'center',
-                showConfirmButton: false,
-                timer: 4000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-              Toast.fire({
-                icon: 'success',
-                title: 'User Logged',
+            dispatch(actions.signin(data))
+            .then(res=>{
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 800,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: 'User Logged',
+                })
+                navigate('/', { replace: true })
             })
+            .catch(err=>{
+                console.log(err);
+                Swal.fire({
+                    icon:"error",
+                    title: err.response.data.message
+                })
 
-            localStorage
-            .setItem('token',res.data.token)
-            localStorage
-            .setItem('user',JSON.stringify(res.data.user))
-
-            navigate('/', { replace: true })
-        })
-        .catch(err=>{
-            console.log(err);
-            Swal.fire({
-                icon:"error",
-                title: err.response.data.message
             })
-
-        })
     }
   return (
     
@@ -71,33 +58,18 @@ export default function Formsesion(e) {
                     <fieldset className="flex justify-between border-2 rounded-lg h-14">
                         <legend className="text-orange-600">Email</legend>
                         <input className="" type="email" placeholder="email " ref={email} />
-
                         <img className='h-5' src="src\imagenes\img@.png" alt="" />
-
                     </fieldset>
-
-
                     <fieldset className="flex justify-between border-2 rounded-lg h-14">
                         <legend className="text-orange-600">Password</legend>
                         <input className="  " type="password" placeholder="password" ref={password} />
-
                         <img className='h-5' src="src\imagenes\imglock.png" alt="" />
-
-                    </fieldset>
-                    
+                    </fieldset>                    
                     <div className=" flex justify-center flex-col items-center text-center py-2">
-
                         <input value="Sign In" className='mb-2 w-5/6 h-8 md:w-3/4 lg:w-1/2 xl:w-3/12 2xl:w-2/12  rounded bg-primary text-white font-semibold  text-xl' type="submit" />
-                    
-                        {/* <button  className='mb-2 w-5/6 h-8 md:w-3/4 lg:w-1/2 xl:w-3/12 2xl:w-2/12  rounded bg-primary text-white font-semibold  text-xl'>Sign in</button> */}
-
                         <Googlesesion/>                     
-
                     </div>
-
-                        <Homepagesesion/>
-                    
-                </form>
-                
+                        <Homepagesesion/>                   
+                </form>              
   )
 }

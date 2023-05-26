@@ -33,7 +33,7 @@ useEffect(
   },
   [reload, page,count]
   )
-  console.log(count)
+ 
   useEffect(
   ()=>{
     axios(apiUrl+'categories')
@@ -48,15 +48,14 @@ const dispatch = useDispatch()
 
 function checkedId(){
   let categories = Object.values(category_id.current)
-    let values = []
-      categories.forEach(each=>{
+  let values = []
+    categories.forEach(each=>{
         if(each.checked){
           values.push(each.value)
         }
       })
       return values
 }
-
 function sendData() {
   let data = {
     title: search.current.value,
@@ -78,7 +77,7 @@ const checkbox = (event)=> {
     id: category._id,
     name: category.name
   }));
-  setReload(!reload)
+
  
 }
   return(
@@ -130,7 +129,7 @@ const checkbox = (event)=> {
             {mangas && mangas.length > 0 ? (
               mangas?.map((manga=>
                 <>
-                  <div key={manga._id} className="bg-white drop-shadow-xl mt-4 rounded-2xl ml-4 mr-4">
+                  <div key={manga._id} className="bg-white shadow-xl mt-4 rounded-2xl ml-4 mr-4">
                     <div className="flex h-48 lg:h-56 xl:h-48 2xl:h-56">
                       <div className='flex items-center'>
                         <div className='border-l-8 h-2/3' style={{ borderColor: manga.category_id.color }}></div>
