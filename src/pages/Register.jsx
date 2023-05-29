@@ -7,6 +7,7 @@ const SignUp = ()=>{
         <div className="">
 
  
+ 
             <div className="sm:h-screen sm:w-full sm:flex sm:justify-center         sm:items-center          h-screen w-full flex justify-center items-center">
                 
                 <div className="sm:h-screen sm:w-full

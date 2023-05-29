@@ -1,6 +1,6 @@
 import Formsesion from "../components/formsesion";
 
-const SignIn = ()=>{
+export default function SignIn  (){
     return (
     <div>
         <div className="sm:h-screen sm:w-full sm:flex sm:justify-center sm:items-center h-screen w-full flex justify-center items-center">
@@ -12,10 +12,9 @@ const SignIn = ()=>{
                 <h1 className="font-bold text-4xl m-3">Welcome <span className="text-orange-600">back</span>!</h1>
                 <p className="sm:text-center">Discover manga, manhua and manhwa, track your <br/> progress, have fun, read manga.</p></div>
                 <Formsesion/>
-            </div>
+   
         </div>
+    </div>
     </div>
     )
 } 
-export default SignIn
-
