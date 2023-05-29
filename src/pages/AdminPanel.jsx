@@ -11,6 +11,7 @@ export default function AdminPanel() {
   const [showAuthors, setShowAuthors] = useState(false);
   const navigate = useNavigate()
   
+  
   function show(tableType) {
     if (tableType === 'companies') {
       setShowCompanies(!showCompanies);
@@ -24,11 +25,11 @@ export default function AdminPanel() {
   
  
     
-  let role = JSON.parse(localStorage.getItem("user"))?.role;
+  
 
   return (
     <>
-    {role  === 3 ? (<div className=''>
+    <div className=''>
         <div className='h-[70vh] w-full bg-cover flex justify-center items-center' style={{backgroundImage: `url(../../src/imagenes/admin.png)`}}>
           <h1 className='text-white text-5xl'>Panel</h1>
         </div>
@@ -53,10 +54,7 @@ export default function AdminPanel() {
           </div>
         </div>
        
-    </div>) : (
-    navigate(`/`)
-    )}
-    
+    </div>
     </>
   )
 }

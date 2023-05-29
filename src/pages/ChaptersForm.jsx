@@ -14,25 +14,26 @@ export default function ChaptersForm() {
   function handleform(event){
     event.preventDefault()
 
-    let data ={
-      manga_id: id.id_manga,
-      title: title.current.value,
-      order: order.current.value,
-      pages: pages.current.value.split(",")
-    }
-    axios.post('http://localhost:8000/chapters/', data)
-    .then(res=>{console.log(res)
-      console.log(res);
-    })
+    let data = new FormData()
+      data.append('title' ,title.current.value)
+      data.append('order', order.current.value)
+      data.append('pages', pages.current.files[0])
     
-    .catch(err=>{
-      console.log(err.response)
-       swal({
-        title:'Error',
-        text: err.response.data.message.join('\n') ,
-        icon: 'error'
+      axios.post(`http://localhost:8000/chapters/:${id}`, data)
+      .then(res=>{console.log(res)
+        swal({
+          title:'Chapter created!',
+          icon: 'success'
+        })
       })
-    })
+      .catch(err=>{
+        console.log(err.response)
+         swal({
+          title:'Error',
+          text: err.response.data.message.join('\n'),
+          icon: 'error'
+        })
+      })
    
     
   }
@@ -43,7 +44,7 @@ export default function ChaptersForm() {
     <div>
     
       
-        <form onSubmit={(event)=>handleform(event)} className='flex flex-col items-center justify-center h-[50vh] ' >
+        <form onSubmit={(event)=>handleform(event)} className='flex flex-col items-center justify-center h-[100vh] ' >
           <h2 className='text-4xl' >New chapter</h2>
           <div className='mt-10'>
             <div className='border-b-2 border-black border-opacity-50' >
@@ -53,7 +54,7 @@ export default function ChaptersForm() {
               <input type="number" ref={order} placeholder='Insert order'/>
             </div>
             <div className='border-b-2 border-black border-opacity-50 mt-5 '>
-              <input type="text" ref={pages} placeholder='Insert pages'/>
+              <input type="file" ref={pages} placeholder='Insert pages'/>
             </div>
           </div>
          

@@ -3,12 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import companies_actions from '../store/actions/companies';
 import loguito from '../imagenes/Union.png';
 import SwithCompany from './SwithCompany';
+import { useNavigate } from 'react-router-dom';
 
 const { read_companies } = companies_actions;
 
 export default function Companies_table() {
   const { active, inactive } = useSelector(store => store?.companies?.companies);
   const [filteredCompanies, setFilteredCompanies] = useState([]);
+  let role = JSON.parse(localStorage.getItem("user")).role;
+  console.log(role);
+  const navigate = useNavigate()
 
   const dispatch = useDispatch();
 
@@ -33,8 +37,9 @@ export default function Companies_table() {
   };
 
   return (
-    <>
-      {filteredCompanies.map(company => (
+    <>{
+      role ===3 ? (
+        filteredCompanies.map(company => (
         <tr className='border border-gray-400' key={company._id}>
           <td className="">
             <div className='flex'>
@@ -57,7 +62,13 @@ export default function Companies_table() {
             />
           </td>
         </tr>
-      ))}
-    </>
+      ))
+  
+      ) : (
+        navigate(`/`)
+      )
+    }
+      </>
+      
   );
 }

@@ -2,35 +2,41 @@ import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import axios from "axios";
 import apiUrl from "../../api";
-import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 export default function MangasNew() {
   const title = useRef()
   const category_id = useRef()
+  const cover_photo = useRef()
   const description = useRef()
 
   function handlerForm(botton){
     botton.preventDefault()
-    if ((title.current.value.length <= 5 || title.current.value.length >= 15 ) ||  (description.current.value.length <= 10) || description.current.value.length >= 75) {
-      Swal.fire({
-      title:"Upssss",
-      text:"Failed to create Manga",
-      icon:"error"
-    })
-      return;
-    }else{
-      Swal.fire({
-        title:'Your new manga has been create successfully',
-        icon:"success"
-      })
-    }
-    let dates = {
-      title:title.current.value,
-      category_id:category_id.current.value,
-      description:description.current.value
-    }
+   
+    let dates = new FormData()
+      dates.append('title',title.current.value)
+      dates.append('category_id',category_id.current.value)
+      dates.append('description', description.current.value)
+      dates.append('cover_photo', cover_photo.current.files[0])
+
+    
     console.log(dates)
-    axios.post(apiUrl+'mangas',dates).then(res=>console.log(res)).catch(err=>console.log(err))
+    
+    axios.post(`http://localhost:8000/mangas`, dates)
+        .then(res=>{console.log(res)
+          swal({
+            title:'manga created!',
+            icon: 'success'
+          })
+        })
+        .catch(err=>{
+          console.log(err.response)
+           swal({
+            title:'Error',
+            text: err.response.data.message.join('\n') ,
+            icon: 'error'
+          })
+        })
 
   }
   useEffect(
@@ -58,6 +64,9 @@ export default function MangasNew() {
             <option>Insert Category</option>
             {categoryId()}
           </select>
+        </div>
+        <div>
+        <input className="w-96 sm:w-56 border-b-2 bg-slate-200 border-black px-4 py-2 rounder" type="file" placeholder="cover photo"ref={cover_photo}/>
         </div>
         <div>
           <textarea className="w-96 sm:w-56 border-b-2 bg-slate-200 border-black  px-4 py-2 rounder" type="text" placeholder="Insert description"ref={description}></textarea>

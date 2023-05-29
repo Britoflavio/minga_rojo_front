@@ -18,9 +18,9 @@ const routes = createBrowserRouter([
      element:<Layout/>,
      children:[
         {path:'/', element:<Main/>},
-        {path:'/register',element:<Register/>},
-        {path:'/login',element:<Login/>},
-        {path: '/chapter-form/:id_manga', element:<ChaptersForm/>},
+        {path:'/Register',element:<Register/>},
+        {path:'/Login',element:<Login/>},
+        {path: '/chapter-form/:id', element:<ChaptersForm/>},
         {path: '/mangas-form',element:<Mangaform/>},
         {path: '/chapters/:id/:page',element:<Page_chapters/>},
         {path:'/mangas/:page',element:<MangasCreate/>},

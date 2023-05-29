@@ -16,7 +16,7 @@ export default function Main() {
   },
   [])
   const location = useLocation()
-  if (["/login","/register"].includes(location.pathname)){ 
+  if (["/Login","/Register"].includes(location.pathname)){ 
     return <Outlet/>
  }
   return (
