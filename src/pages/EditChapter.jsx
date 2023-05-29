@@ -3,12 +3,15 @@ import { useParams,  Navigate} from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import Swal from "sweetalert2"
 import chapters_actions from '../store/actions/chapters'
+import { gapi } from "gapi-script"
+import GoogleLogin from 'react-google-login'
+
 
 const { read_chapters, read_manga, delete_chapter, update_chapter} = chapters_actions
 
 export default function EditChapter() {
 
-    let mangas = useSelector(store => store.chapters.mangas.title)
+    let mangas = useSelector(store => store.chapters.mangas)
     console.log(mangas);
 
     let chapters = useSelector(store => store.chapters.chapters)
@@ -35,16 +38,15 @@ export default function EditChapter() {
         }
 
     const upd_chapters = () => {
-        let dataToUpdate = {manga_id: id_manga};
+        let dataToUpdate = {};
             dataToUpdate = {
-            _id: idUpdate,
-                manga_id: id_manga,
-                title: currentKey == "title" ? currentValue : title,
-                order: currentKey == "order" ? currentValue : order,
-                cover_photo: currentKey == "cover_photo" ? currentValue : coverFoto,
-                pages: currentKey == "pages" ? currentValue.split(',') : pages
-            }
-
+                            _id: idUpdate,
+                            title: currentKey == "title" ? currentValue : title,
+                            order: currentKey == "order" ? currentValue : order,
+                            cover_photo: currentKey == "cover_photo" ? currentValue : coverFoto,
+                            pages: currentKey == "pages" ? currentValue.split(',') : pages
+                            }
+                            
         dispatch(update_chapter({
             id: idUpdate, 
             data: dataToUpdate, 
@@ -80,12 +82,7 @@ function handleForm(e){
     setPages(selectedChapter[0].pages)
     setCurrentKey(data.selectData)
     setCurrentValue(data.inputData)
-    // let cover = chapters.filter(image => image._id === data.id_chapter)
-    // setCoverFoto(cover[0].cover_photo)
-    // let titleChapter = chapters.filter(title => title._id === data.id_chapter)
-    // setTitle(titleChapter[0].title)
-    // let orderChapter = chapters.filter(order => order._id === data.id_chapter)
-    // setOrder(orderChapter[0].order)
+   
     console.log(data.id_chapter)
 }
 
@@ -143,21 +140,17 @@ let alertUpdate = (updateFunctions) =>{
         }
     })
 }
-//cambiar local storage de cducmentos de redox flavio
-let user = JSON.parse(localStorage.getItem('user'))
-console.log(user);
 
   return (
-    <>
-        {user.role == 1 || user.role == 2 ? (
+    
             <>
-                <div className="flex justify-around">
+                <div className=" flex justify-around">
                 <section className="grid h-[80vh] mb-[11rem] place-content-center text-slate-300 pt-52">
                     <div className="mb-10 text-center text-black">
                         <h1 className="text-3xl -tracking-tight font-sans">Edit Chapter</h1>
                     </div>
                     <form onChange={(e) => handleForm(e)} className="flex flex-col items-center justify-center space-y-6 pt-14">
-                        <input type="text" id="" name="" placeholder="Name of the manga" className="w-80 appearance-none  border-0  p-2 px-4 text-black border-b border-gray-500 bg-transparent focus:outline-none focus:ring-0" value={mangas?? ''} disabled= {true}/>
+                        <input type="text" id="" name="" placeholder="Name of the manga" className="w-80 appearance-none  border-0  p-2 px-4 text-black border-b border-gray-500 bg-transparent focus:outline-none focus:ring-0" value={mangas.title?? ''} disabled= {true}/>
                         <div>
                             <select  placeholder="Insert order" className="w-80 appearance-none  border-0  p-2 px-4  border-b border-gray-500 bg-transparent focus:outline-none focus:ring-0  text-slate-400" name="chapters" ref={title_chapter}>
                             {chapters.map((chapter, index) => (
@@ -178,23 +171,16 @@ console.log(user);
                             <input type="text" id="Insert order" name="Insert order" placeholder="Data to edit" className="w-80 appearance-none  border-0  p-2 px-4 text-black border-b border-gray-500 bg-transparent focus:outline-none focus:ring-0 mb-16" ref={inputData}  />
                         </div>
                     </form>
-                            <button onClick= { ()=>alertUpdate(upd_chapters)} className="rounded-full bg-[#34D399] p-2 px-32 py-4 text-white t-10 font-bold text-lg mb-8"> Edit</button>
-
-                            <button onClick= { () => {
-        dispatch(delete_chapter({
-            id:idDelete}))
-            setCoverFoto('')
-        }} className="rounded-full bg-[#FBDDDC] p-2 px-32 py-4 text-[#EE8380] t-10 font-bold text-lg"> Delete</button>
+                    <button onClick= { ()=>alertUpdate(upd_chapters)} className="rounded-full bg-[#34D399] p-2 px-32 py-4 text-white t-10 font-bold text-lg mb-8"> Edit</button>
+                            <button onClick= { ()=>alertDelete(delete_Id)} className="rounded-full bg-[#FBDDDC] p-2 px-32 py-4 text-[#EE8380] t-10 font-bold text-lg"> Delete</button>
                 </section>       
                 <div className="grid place-content-center pt-36 h-full xsm:hidden">
                     <p className="text-center mb-5 font-bold">Chapter #{order} - {title}</p>
-                    <img className="h-[35rem] w-auto" src={coverFoto}/>
+                    <img className="h-[30rem] w-[50vw]" src={coverFoto}/>
                 </div>
                 </div>
             </>
-        ) : (
-            <Navigate to= '/' />
-        )}
-    </>
-  )
+    
+
+)
 }

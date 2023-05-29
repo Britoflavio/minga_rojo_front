@@ -52,7 +52,7 @@ const reducer = createReducer(
                     }else{
                         return each
                     }
-                })
+                }).sort((a, b) => a.order - b.order) 
             }
             return newState
         }
