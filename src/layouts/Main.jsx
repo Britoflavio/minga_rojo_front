@@ -25,7 +25,6 @@ export default function Main() {
     
     <Navbar/>
       <Outlet/> 
-      <Outlet/> 
     <Footer/>
 
     </>
