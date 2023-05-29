@@ -1,5 +1,4 @@
-import React, { useRef } from 'react'
-import Navbar from '../components/Navbar'
+import { useRef } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import swal from 'sweetalert'

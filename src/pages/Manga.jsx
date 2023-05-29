@@ -2,13 +2,10 @@ import ok from '../imagenes/ok.png'
 import bad from '../imagenes/bad.png'
 import like from '../imagenes/like.png'
 import sorprise from '../imagenes/sorprise.png'
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import VITE_API from '../../api'
-import React from 'react'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import { useSelector, useDispatch } from 'react-redux';
 import actionsManga from '../store/actions/one_manga.js'
 import actionsChapter from '../store/actions/one_chapter.js'
@@ -54,7 +51,7 @@ export default function Manga() {
         }))
       } )
       .catch(err => console.log(err))
-  }, [])
+  }, [dispatch, id])
   // console.log(mangas);
 
   useEffect(() => {
@@ -62,14 +59,14 @@ export default function Manga() {
       .then  (res =>{
         const data = res.data.response
         console.log('chapters', res);
-      setChapters(data)
+        setChapters(data)
         dispatch(one_chapter(data))
         setCount(res.data.count)
         setCantPages2(res.data.cantPages1)
     })
       .catch(err => console.log(err))
   },
-    [id, page, reload]
+    [dispatch, id, page, reload]
   )
     // console.log(count);
   function next() {

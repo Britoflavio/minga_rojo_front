@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import {  useState } from 'react' 
 import Authors_table from '../components/Authors_table'
 import Companies_table from '../components/Companies_table'
 import { useNavigate } from 'react-router-dom'
-
 
 export default function AdminPanel() {
 

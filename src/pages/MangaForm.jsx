@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from "react";
 import axios from "axios";
 import apiUrl from "../../api";
 import Swal from "sweetalert2";
+
 
 export default function MangasNew() {
   const title = useRef()

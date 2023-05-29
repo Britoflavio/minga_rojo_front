@@ -1,8 +1,7 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
 import swal from 'sweetalert'
-import apiUrl from '../../api'
+
 
 export default function NewCompany() {
     let name = useRef()

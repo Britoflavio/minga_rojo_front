@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { Fragment, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Dialog, Transition } from '@headlessui/react';
-import React from 'react'
 import manga_action from '../store/actions/mangaud'
 import Swal from 'sweetalert2';
 

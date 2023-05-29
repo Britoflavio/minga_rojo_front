@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import actions from "../store/actions/mangas";
 import categories_read from "../store/actions/categories"
 import mangas_actions from "../store/actions/mangaud"
 import Swal from "sweetalert2";
-import { Link as Anchor, useNavigate, useParams } from 'react-router-dom'
+import { Link as Anchor, useNavigate} from 'react-router-dom'
 import Editmangas from "./Editmanga";
 
 const  {categoriesRead} = categories_read
@@ -18,7 +18,6 @@ const [open,setOpen] = useState(false)
 const [mangaId,setMangaId] = useState()
 const categories = useSelector(store => store.categories.categories)
 const mangas = useSelector(store => store.manga.manga)
-const user = useSelector(store => store.user.user)
 const reduxData = useSelector(store => store.mangasFilter)
 const category_id = useRef()
 const dispatch = useDispatch()
@@ -36,7 +35,7 @@ useEffect(
     dispatch(manga_read())
     dispatch(manga_update())
   },
-  []
+  [dispatch]
   )
 
   function urlChapter(id){
@@ -47,6 +46,16 @@ useEffect(
     navigate(`/mangas/manga/${id}`)
   }
 
+  function checkedId(){
+    let categories = Object.values(category_id.current)
+    let values = []
+      categories.forEach(each=>{
+          if(each.checked){
+            values.push(each.value)
+          }
+        })
+        return values
+  }
 
   function sendData() {
     let data = {
@@ -84,8 +93,8 @@ useEffect(
     })
   }
 
-  const checkbox = (e)=> {
-    const array = categories.map(category => ({
+  const checkbox = ()=> {
+   categories.map(category => ({
       id: category._id,
       name: category.name
     }));
@@ -125,7 +134,7 @@ useEffect(
               {mangas?.map((manga=>
                   <>
                     
-                    <div key={manga?._id} className="bg-white shadow-xl mt-4 rounded-2xl ml-4 mr-4">
+                    <div key={manga._id} className="bg-white shadow-xl mt-4 rounded-2xl ml-4 mr-4">
                       <div className="flex h-48 lg:h-56 xl:h-48 2xl:h-56">
                         <div className='flex items-center'>
                           <div className='border-l-8 h-2/3' style={{ borderColor: manga?.category_id.color }}></div>

@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import apiUrl from "../../api";
 import { useSelector, useDispatch } from "react-redux";
 import actions from "../store/actions/mangas";
-import { Link as Anchor, useNavigation } from 'react-router-dom'
-import { useNavigate } from "react-router-dom";
+import { Link as Anchor, } from 'react-router-dom'
 
 
 const {mangasFilter} = actions
@@ -18,20 +18,21 @@ const [mangas,setMangas] = useState()
 const [reload,setReload] =useState(false)
 const [categories,setCategories] = useState([])
 const [page,setPage] = useState(1)
-const [count,setCount] = useState()
+const [count,setCount] = useState(0)
 
 
 useEffect(
   ()=> {
-    let checked =  checkedId()
-    axios(apiUrl+`mangas?title=${search?.current.value}&category_id=${reduxData.categoriesChecked.join(',')}&order=1&page=${page}&limit=`)
+   
+    axios(apiUrl+`mangas?title=${search.current.value}&category_id=${reduxData.categoriesChecked.join(',')}&order=1&page=${page}&limit=`)
     .then(res=>{
       setMangas(res.data.response)
       setCount(res.data.count)
     })
     .catch(err=>console.log(err))
   },
-  [reload, page,count]
+  
+  [reload, page, count]
   )
  
   useEffect(
@@ -72,8 +73,8 @@ const PrevPage = () => {
   setPage(page- 1)
 }
 
-const checkbox = (event)=> {
-  const array = categories.map(category => ({
+const checkbox = ()=> {
+   categories.map(category => ({
     id: category._id,
     name: category.name
   }));
@@ -147,7 +148,7 @@ const checkbox = (event)=> {
                 </>))
                 
                   ) : (
-                  <p className='xl:grid-hidden flex justify-center items-center text-black font-semibold h-36'>We couldn't find this title.</p>
+                  <p className='xl:grid-hidden flex justify-center items-center text-black font-semibold h-36'>We couldnt find this title.</p>
                 )}
             </div>
             <div className='h-32 flex justify-around items-center mb-8 2xl:mb-16'>
