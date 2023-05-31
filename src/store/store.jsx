@@ -9,6 +9,7 @@ import reducermangaRead from "./reducers/mangaud"
 import reducerToken from "./reducers/token"
 import reducerAuthors from "./reducers/authors"
 import reducerCompanies from "./reducers/companies"
+import reducerDonate from "./reducers/donate"
 
 const store = configureStore({
     reducer:{
@@ -21,7 +22,8 @@ const store = configureStore({
         manga: reducermangaRead,
         user:reducerToken,
         authors:reducerAuthors,
-        companies:reducerCompanies
+        companies:reducerCompanies,
+        donate:reducerDonate
     }
 })
 

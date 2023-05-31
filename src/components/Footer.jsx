@@ -6,17 +6,20 @@ import Vm from "../imagenes/Vimeo.png"
 import Donate from "../imagenes/donate.png"
 import Logo from "../imagenes/logo-dos.png"
 import { Link as Anchor } from "react-router-dom"
-import React,{ useState } from "react"
+import { useState } from "react"
 import DonateCM from "../pages/donate.jsx"
 
-
 export default function Footer() {
+
   const [open,setOpen] = useState(false)
   
+ 
+
   const openModal = () => {
     setOpen(true)
+    
   }
-
+ 
   return (
 
     <>
