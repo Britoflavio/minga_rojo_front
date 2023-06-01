@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import { Link as Anchor } from 'react-router-dom'
 
 export default function Homepage () {
@@ -9,3 +9,4 @@ export default function Homepage () {
     </div>
   )
 }
+ */

@@ -1,5 +1,5 @@
 /* import Google from './google' */
-import Homepage from './homepage'
+/* import Homepage from './homepage' */
 import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import axios from 'axios'
@@ -89,7 +89,7 @@ export default function Form () {
 
       </div>
 
-      <Homepage />
+      {/*  <Homepage /> */}
 
     </form>
   )
