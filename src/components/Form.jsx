@@ -1,4 +1,4 @@
-import Google from './google'
+/* import Google from './google' */
 import Homepage from './homepage'
 import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
@@ -85,7 +85,7 @@ export default function Form () {
         </label>
         <input className='mb-2 w-5/6 h-8 md:w-3/4 lg:w-1/2 xl:w-3/12 2xl:w-2/12  rounded bg-primary text-white font-semibold  text-xl' type='submit' value='SignUp' />
 
-        <Google />
+        {/* <Google /> */}
 
       </div>
 
