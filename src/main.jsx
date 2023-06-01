@@ -5,10 +5,8 @@ import store from './store/store'
 import routes from './router/router.jsx'
 import { Provider } from 'react-redux'
 
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <Provider store={store}>
-        <RouterProvider router={routes} />
-    </Provider>
+  <Provider store={store}>
+    <RouterProvider router={routes} />
+  </Provider>
 )

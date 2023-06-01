@@ -1,27 +1,27 @@
-import { createReducer } from "@reduxjs/toolkit";
-import actions from "../actions/companies";
+import { createReducer } from '@reduxjs/toolkit'
+import actions from '../actions/companies'
 
-const {read_companies} = actions
+const { readCompanies } = actions
 
-let initialState = {
-    companies:{
-        active:[],
-        inactive:[]
-    }
+const initialState = {
+  companies: {
+    active: [],
+    inactive: []
+  }
 }
 
 const reducer = createReducer(
-    initialState,
-    (builder)=>builder
+  initialState,
+  (builder) => builder
     .addCase(
-        read_companies.fulfilled,
-        (state, action) =>{
-            let newState ={
-                ...state,
-                companies:action.payload.companies
-            }
-            return newState
+      readCompanies.fulfilled,
+      (state, action) => {
+        const newState = {
+          ...state,
+          companies: action.payload.companies
         }
+        return newState
+      }
     )
 )
 

@@ -1,62 +1,62 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import apiUrl from "../../../api";
+/* eslint-disable no-undef */
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios'
+import apiUrl from '../../../api'
 
 const token = createAsyncThunk(
-    'token', 
-    async ()=>{  
-     try {
-      let token = localStorage.getItem('token')
-      let headers = { headers: { 'Authorization': `Bearer ${token}` } }
-      let res = await axios.post(apiUrl + 'auth/token' ,{},headers)   
-     
-        return {
-             user:res.data.user,
-             token:res.data.token
-        }
-     } catch (error) {
-        
-     }
+  'token',
+  async () => {
+    try {
+      const token = localStorage.getItem('token')
+      const headers = { headers: { Authorization: `Bearer ${token}` } }
+      const res = await axios.post(apiUrl + 'auth/token', {}, headers)
+
+      return {
+        user: res.data.user,
+        token: res.data.token
+      }
+    } catch (error) {
+
     }
+  }
 )
 const logout = createAsyncThunk(
-  'logout', 
-  async ()=>{  
-   try {
-    let token = localStorage.getItem('token')
-    let headers = {headers:{'Authorization':`Bearer ${token}`}}
-    await axios.post(apiUrl+'auth/signout',null,headers)
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
+  'logout',
+  async () => {
+    try {
+      const token = localStorage.getItem('token')
+      const headers = { headers: { Authorization: `Bearer ${token}` } }
+      await axios.post(apiUrl + 'auth/signout', null, headers)
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
       return {
-           user:null,
-           token:null
+        user: null,
+        token: null
       }
-   } catch (error) {
-      
-   }
+    } catch (error) {
+
+    }
   }
 )
 
 const signin = createAsyncThunk(
-  'signin', 
-  async (data)=>{  
-   try {
-    let res = await axios.post("http://localhost:8000/auth/signin",data)
-      localStorage.setItem('token',res.data.token)
-      localStorage.setItem('user',JSON.stringify(res.data.user))
-      
+  'signin',
+  async (data) => {
+    try {
+      const res = await axios.post('http://localhost:8000/auth/signin', data)
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+
       return {
-           user:res.data.user,
-           token:res.data.token
+        user: res.data.user,
+        token: res.data.token
       }
-   } catch (error) {
-      
-   }
+    } catch (error) {
+
+    }
   }
 )
 
-
-const actions = {token,logout,signin}
+const actions = { token, logout, signin }
 
 export default actions

@@ -1,24 +1,25 @@
 import { createReducer } from '@reduxjs/toolkit'
-import actions from '../actions/categories'
 
-const { categoriesRead } = actions
+import actions from '../actions/oneChapter.js'
 
-const inicialState = {
-  categories: []
+const { oneChapter } = actions
+const initialState = {
+  chapters: []
 }
 
 const reducer = createReducer(
-  inicialState,
+  initialState,
   (builder) => builder
     .addCase(
-      categoriesRead.fulfilled,
+      oneChapter,
       (state, action) => {
         const newState = {
           ...state,
-          categories: action.payload.categories
+          chapters: action.payload.data
         }
         return newState
       }
+
     )
 )
 export default reducer
